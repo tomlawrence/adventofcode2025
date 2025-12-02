@@ -15,4 +15,5 @@ npm start
 ## Days
 
 - [Day 1: Secret Entrance](./day01/day01.ts)
-- Day 2 (coming soon!)
+- [Day 2: Gift Shop](./day02/day02.ts)
+- Day 3 (coming soon!)
