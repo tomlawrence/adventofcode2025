@@ -13,7 +13,7 @@ let part2 = 0;
 for (const { start, end } of ranges) {
   for (let i = start; i <= end; i++) {
     part1 += /^(\d+)\1$/.test(String(i)) ? i : 0;
-    part2 += /^(\d+)(\1)+$/.test(String(i)) ? i : 0;
+    part2 += /^(\d+)\1+$/.test(String(i)) ? i : 0;
   }
 }
 
