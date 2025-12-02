@@ -82,7 +82,7 @@ class AdventMenu {
 
       child.on("close", (code) => {
         if (code !== 0) {
-          console.log(`\n\n⚠️  Process exited with code ${code}`);
+          console.log(`\n\n⚠️ Process exited with code ${code}`);
         }
         console.log("\n\nPress any key to return to menu...");
 

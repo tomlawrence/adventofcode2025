@@ -1,10 +1,7 @@
-import { readFileSync } from "fs";
 import { join } from "path";
+import { readInputFile } from "../helpers/readInputFile";
 
-const lines = readFileSync(join(__dirname, "day01.txt"), "utf8")
-  .trim()
-  .split(/\r?\n/);
-
+const lines = readInputFile(join(__dirname, "day01.txt"));
 const instructions = lines.map((line) => ({
   direction: line[0] as "L" | "R",
   steps: parseInt(line.slice(1)),
