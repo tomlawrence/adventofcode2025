@@ -66,9 +66,19 @@ class AdventMenu {
     );
 
     return new Promise((resolve) => {
-      const child = spawn("ts-node", [item.path], {
-        stdio: "inherit",
-      });
+      let child;
+
+      // Windows needs shell, Linux/Mac don't
+      if (process.platform === "win32") {
+        child = spawn("npx", ["ts-node", item.path], {
+          stdio: "inherit",
+          shell: true,
+        });
+      } else {
+        child = spawn("npx", ["ts-node", item.path], {
+          stdio: "inherit",
+        });
+      }
 
       child.on("close", (code) => {
         if (code !== 0) {
