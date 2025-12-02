@@ -9,6 +9,7 @@ git clone https://github.com/tomlawrence/adventofcode2025.git
 cd adventofcode2025
 npm install
 npm start
+
 ```
 
 ## Days
