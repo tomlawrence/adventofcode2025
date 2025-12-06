@@ -19,4 +19,5 @@ npm start
 - [Day 3: Lobby](./day03/day03.ts)
 - [Day 4: Printing Department](./day04/day04.ts)
 - [Day 5: Cafeteria](./day05/day05.ts)
-- Day 6 (coming soon!)
+- [Day 6: Trash Compactor](./day06/day06.ts)
+- Day 7 (coming soon!)
