@@ -1,8 +1,13 @@
 import { readFileSync } from "fs";
 
-export function readInputFile(filepath: string): string[] {
+export function readInputFile(filepath: string, options?: { trim?: boolean }): string[] {
+  const { trim = true } = options ?? {};
   try {
-    return readFileSync(filepath, "utf8").trim().split(/\r?\n/);
+    let file = readFileSync(filepath, "utf8");
+    if (trim) file = file.trim();
+    const lines = file.split(/\r?\n/);
+    if (lines.length > 0 && lines[lines.length - 1] === "") lines.pop();
+    return lines;
   } catch (err) {
     if (err instanceof Error && "code" in err && err.code === "ENOENT") {
       console.error(`❌ Input file not found: ${filepath}`);
