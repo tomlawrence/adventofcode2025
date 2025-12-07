@@ -1,7 +1,9 @@
 import { join } from "path";
 import { readInputFile } from "../helpers/readInputFile";
+import { logExecutionTimes } from "../helpers/logExecutionTimes";
 
 const warehouse = readInputFile(join(__dirname, "day04.txt"));
+const p1Start = performance.now();
 
 // prettier-ignore
 const directions = [
@@ -37,14 +39,15 @@ for (let row = 0; row < warehouse.length; row++) {
     }
   }
 }
+const p1End = performance.now();
 
+const p2Start = performance.now();
 let part2 = 0;
 
 while (rollsToRecheck.length > 0) {
   const [row, col] = rollsToRecheck.pop()!;
   if (warehouse[row][col] !== "@") continue;
-  warehouse[row] =
-    warehouse[row].slice(0, col) + "x" + warehouse[row].slice(col + 1);
+  warehouse[row] = warehouse[row].slice(0, col) + "x" + warehouse[row].slice(col + 1);
   part2++;
 
   for (const dir of directions) {
@@ -61,6 +64,8 @@ while (rollsToRecheck.length > 0) {
     }
   }
 }
+const p2End = performance.now();
 
 console.log(`Part 1 Accessible rolls of paper: ${part1}`);
 console.log(`Part 2 Number of rolls removed: ${part2}`);
+logExecutionTimes({ start: p1Start, end: p1End, p2Start: p2Start, p2End: p2End });

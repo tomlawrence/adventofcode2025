@@ -1,8 +1,10 @@
 import { join } from "path";
 import { readInputFile } from "../helpers/readInputFile";
+import { logExecutionTimes } from "../helpers/logExecutionTimes";
 
 const lines = readInputFile(join(__dirname, "day05.txt"));
 
+const p1Start = performance.now();
 const ranges = lines
   .slice(0, lines.indexOf(""))
   .map((range) => ({
@@ -23,7 +25,9 @@ for (const ingredient of ingredients) {
     }
   }
 }
+const p1End = performance.now();
 
+const p2Start = performance.now();
 const newRanges = [];
 newRanges.push(ranges[0]);
 
@@ -37,6 +41,8 @@ for (const range of ranges) {
 }
 
 let part2 = newRanges.reduce((total, range) => total + range.end - range.start + 1, 0);
+const p2End = performance.now();
 
 console.log(`Part 1 Fresh Ingredients Total: ${part1}`);
 console.log(`Part 2 Ingredient ID Range Total: ${part2}`);
+logExecutionTimes({ start: p1Start, end: p1End, p2Start: p2Start, p2End: p2End });

@@ -1,8 +1,10 @@
 import { join } from "path";
 import { readInputFile } from "../helpers/readInputFile";
+import { logExecutionTimes } from "../helpers/logExecutionTimes";
 
 const batteries = readInputFile(join(__dirname, "day03.txt"));
 
+const p1Start = performance.now();
 let part1 = 0;
 
 for (const bank of batteries) {
@@ -22,7 +24,9 @@ for (const bank of batteries) {
   }
   part1 += parseInt(d1 + d2);
 }
+const p1End = performance.now();
 
+const p2Start = performance.now();
 let part2 = 0;
 
 for (const bank of batteries) {
@@ -46,6 +50,8 @@ for (const bank of batteries) {
   }
   part2 += parseInt(joltage);
 }
+const p2End = performance.now();
 
 console.log(`Part 1: ${part1}`);
 console.log(`Part 2: ${part2}`);
+logExecutionTimes({ start: p1Start, end: p1End, p2Start: p2Start, p2End: p2End });
