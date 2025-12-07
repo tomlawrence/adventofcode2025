@@ -27,5 +27,23 @@ function spawnBeam(row: number, col: number) {
 spawnBeam(1, beamStart);
 const p1End = performance.now();
 
-console.log(`Part 1 Beams Split: ${part1.size}`);
-logExecutionTimes({ start: p1Start, end: p1End });
+const p2Start = performance.now();
+function countPaths(row: number, col: number): number {
+  for (let i = row + 1; i < lines.length; i++) {
+    if (lines[i][col] === "^") {
+      let leftPaths = 0;
+      let rightPaths = 0;
+      if (col - 1 >= 0) leftPaths = countPaths(i, col - 1);
+      if (col + 1 < len) rightPaths = countPaths(i, col + 1);
+      return leftPaths + rightPaths;
+    }
+  }
+  return 1;
+}
+
+let part2 = countPaths(1, beamStart);
+const p2End = performance.now();
+
+console.log(`Part 1 Tachyon Beams Split: ${part1.size}`);
+console.log(`Part 2 Tachyon Beam Timelines: ${part2}`);
+logExecutionTimes({ start: p1Start, end: p1End, p2Start: p2Start, p2End: p2End });

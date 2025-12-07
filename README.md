@@ -20,4 +20,5 @@ npm start
 - [Day 4: Printing Department](./day04/day04.ts)
 - [Day 5: Cafeteria](./day05/day05.ts)
 - [Day 6: Trash Compactor](./day06/day06.ts)
-- Day 7 (coming soon!)
+- [Day 7: Laboratories](./day07/day07.ts)
+- Day 8 (coming soon!)
