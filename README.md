@@ -21,4 +21,5 @@ npm start
 - [Day 5: Cafeteria](./day05/day05.ts)
 - [Day 6: Trash Compactor](./day06/day06.ts)
 - [Day 7: Laboratories](./day07/day07.ts)
-- Day 8 (coming soon!)
+- [Day 8: Playground](./day08/day08.ts)
+- Day 9 (coming soon!)
