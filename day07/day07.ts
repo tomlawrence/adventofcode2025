@@ -28,16 +28,23 @@ spawnBeam(1, beamStart);
 const p1End = performance.now();
 
 const p2Start = performance.now();
+const pathCounts = new Map<string, number>();
+
 function countPaths(row: number, col: number): number {
+  const coord = `${row},${col}`;
+  if (pathCounts.has(coord)) return pathCounts.get(coord)!;
   for (let i = row + 1; i < lines.length; i++) {
     if (lines[i][col] === "^") {
       let leftPaths = 0;
       let rightPaths = 0;
       if (col - 1 >= 0) leftPaths = countPaths(i, col - 1);
       if (col + 1 < len) rightPaths = countPaths(i, col + 1);
-      return leftPaths + rightPaths;
+      const result = leftPaths + rightPaths;
+      pathCounts.set(coord, result);
+      return result;
     }
   }
+  pathCounts.set(coord, 1);
   return 1;
 }
 
