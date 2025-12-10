@@ -78,6 +78,14 @@ L82`,
 862,61,35
 984,92,344
 425,690,689`,
+    9: `7,1
+11,1
+11,7
+9,7
+9,5
+2,5
+2,3
+7,3`,
   };
 
   return samples[day] ?? `Sample data for day ${day} not available`;
