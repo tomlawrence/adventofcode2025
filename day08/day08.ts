@@ -51,7 +51,11 @@ function getCircuits(uf: ReturnType<typeof unionFind>, numOfCircuits: number) {
 
 let part2 = 0;
 const uf = unionFind(coords.length);
-for (const connection of connections.slice(0, 1000)) {
+
+// Only check first 10 pairs if using sample data
+const numOfPairs = lines[0] === "162,817,812" ? 10 : 1000;
+
+for (const connection of connections.slice(0, numOfPairs)) {
   uf.union(connection.i, connection.j);
   if (uf.getCount() === 1 && !part2) {
     part2 = coords[connection.i][0] * coords[connection.j][0];
@@ -68,7 +72,7 @@ const part1 = Object.values(circuits)
 const p1End = performance.now();
 
 const p2Start = performance.now();
-for (const connection of connections.slice(1000)) {
+for (const connection of connections.slice(numOfPairs)) {
   uf.union(connection.i, connection.j);
   if (uf.getCount() === 1 && !part2) {
     part2 = coords[connection.i][0] * coords[connection.j][0];
