@@ -25,4 +25,4 @@ npm start
 - [Day 9: Movie Theater](./day09/day09.ts)
 - [Day 10: Factory](./day10/day10.ts)
 - [Day 11: Reactor](./day11/day11.ts)
-- Day 12 (coming soon!)
+- [Day 12: Christmas Tree Farm](./day12/day12.ts)

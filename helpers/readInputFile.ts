@@ -16,7 +16,11 @@ export function readInputFile(filepath: string, options?: { trim?: boolean }): s
   try {
     let file = readFileSync(fileToRead, "utf8");
     if (trim) file = file.trim();
-    const lines = file.split(/\r?\n/);
+
+    const dayMatch = filepath.match(/day(\d+)/i) ?? "";
+    const dayNumber = parseInt(dayMatch[1], 10);
+    // const lines = file.split(/\r?\n/);
+    const lines = dayNumber === 12 ? file.split(/\r?\n\r?\n/) : file.split(/\r?\n/);
     if (lines.length > 0 && lines[lines.length - 1] === "") lines.pop();
     return lines;
   } catch (err) {
@@ -29,7 +33,7 @@ export function readInputFile(filepath: string, options?: { trim?: boolean }): s
         );
         let file = getSampleInput(dayNumber);
         if (trim) file = file.trim();
-        const lines = file.split(/\r?\n/);
+        const lines = dayNumber === 12 ? file.split(/\r?\n\r?\n/) : file.split(/\r?\n/);
         if (lines.length > 0 && lines[lines.length - 1] === "") lines.pop();
         return lines;
       }
